@@ -1,0 +1,29 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+  <h2>Welcome, <%= user.username %>!</h2>
+
+  <% if (patientOptions) { %>
+    <div class="mt-4">
+      <a href="/appointments/book" class="btn btn-success me-2">Book Appointment</a>
+      <a href="/appointments/my-appointments" class="btn btn-info">My Appointments</a>
+    </div>
+  <% } %>
+
+  <% if (doctorOptions) { %>
+    <div class="mt-4">
+      <a href="/appointments/doctor-appointments" class="btn btn-info">View My Appointments</a>
+    </div>
+  <% } %>
+</div>
+
+
+ <script>
+    // Auto-refresh token every 14 minutes
+    setInterval(() => {
+      fetch('/refresh-token', { method: 'POST' })
+        .then(() => console.log("Token refreshed"));
+    }, 14 * 60 * 1000);
+  </script>
+
+<%- include('partials/footer') %>

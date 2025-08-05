@@ -1,0 +1,17 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+  <h2>Your Profile</h2>
+  <ul class="list-group mt-3">
+    <li class="list-group-item"><strong>Username:</strong> <%= user.username %></li>
+    <li class="list-group-item"><strong>Role:</strong> <%= user.role %></li>
+    <% if (user.role === 'doctor' && user.specialization) { %>
+      <li class="list-group-item"><strong>Specialization:</strong> <%= user.specialization %></li>
+    <% } %>
+    <% if (user.lastLogin) { %>
+      <li class="list-group-item"><strong>Last Login:</strong> <%= user.lastLogin.toLocaleString() %></li>
+    <% } %>
+  </ul>
+</div>
+
+<%- include('partials/footer') %>
